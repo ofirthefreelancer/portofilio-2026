@@ -13,7 +13,7 @@ well-set press masthead, not a soft SaaS template.
 - **Neutrals (OKLCH):**
   - bg `oklch(0.965 0.006 70)` · surface `oklch(0.99 0.004 70)`
   - border `oklch(0.84 0.012 60)` · ink/fg `oklch(0.19 0.012 40)`
-  - muted `oklch(0.42 0.014 45)` · dim `oklch(0.56 0.014 50)`
+  - muted `oklch(0.42 0.014 45)` · dim `oklch(0.53 0.014 50)` (AA 4.79:1 on bg)
 - **Type:** Hanken Grotesk (display, up to 900) + Geist Mono (labels,
   metadata, readouts). Heavy display weight is the voice.
 - **Structure:** hard rules (2–3px ink borders), SQUARE corners (radius 0),

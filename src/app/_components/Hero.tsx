@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { Avatar } from "./Avatar";
+import { HeroCanvas } from "./HeroCanvas";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 
 export function Hero() {
@@ -90,7 +90,7 @@ export function Hero() {
         </div>
 
         <div data-anim="plate" className="press-hover mx-auto w-full min-w-0 max-w-[320px] md:mx-0 md:max-w-none">
-          <Avatar />
+          <HeroCanvas />
         </div>
       </div>
     </section>
