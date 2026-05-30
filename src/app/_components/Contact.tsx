@@ -14,10 +14,13 @@ export function Contact() {
             <span className="text-accent">sharp</span>.
           </p>
           <nav className="flex flex-col gap-2.5 font-mono text-[15px]">
-            {LINKS.map(([label, href]) => (
+            {LINKS.map(([label, href]) => {
+              const external = href.startsWith("http");
+              return (
               <a
                 key={label}
                 href={href}
+                {...(external && { target: "_blank", rel: "noreferrer" })}
                 className="group flex items-center gap-3 text-muted transition-colors hover:text-ink"
               >
                 <span className="text-accent">↗</span>
@@ -25,11 +28,12 @@ export function Contact() {
                   {label}
                 </span>
               </a>
-            ))}
+              );
+            })}
           </nav>
         </div>
         <div className="mt-16 flex justify-between font-mono text-[12px] text-dim">
-          <span>Ofir Cohen — 2026</span>
+          <span>Ofir Cohen · 2026</span>
           <span>built with intent</span>
         </div>
       </div>
