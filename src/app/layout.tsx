@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { SmoothScroll } from "./_components/SmoothScroll";
 
 const hanken = Hanken_Grotesk({
   variable: "--font-hanken",
@@ -27,7 +28,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${hanken.variable} ${geistMono.variable} h-full`}>
-      <body className="min-h-full overflow-x-clip bg-bg text-ink">{children}</body>
+      <body className="min-h-full overflow-x-clip bg-bg text-ink">
+        <SmoothScroll />
+        {children}
+      </body>
     </html>
   );
 }

@@ -2,12 +2,9 @@
 
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap } from "@/lib/gsap";
 import { skills } from "@/lib/projects";
 import { useReducedMotion } from "@/lib/useReducedMotion";
-
-gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export function About() {
   const root = useRef<HTMLElement>(null);
@@ -29,11 +26,15 @@ export function About() {
   );
 
   return (
-    <section ref={root} id="about" className="mx-auto max-w-[1180px] px-5 py-20 sm:px-8 sm:py-28">
-      <div className="grid gap-12 md:grid-cols-2 md:gap-20">
+    <section ref={root} id="about" className="flex min-h-screen items-center bg-bg">
+      <div
+        data-panel-inner
+        className="mx-auto w-full max-w-[1180px] px-5 py-20 sm:px-8 sm:py-28"
+      >
+        <div className="grid gap-12 md:grid-cols-2 md:gap-20">
         <p
           data-about
-          className="max-w-[17ch] text-[clamp(30px,4.5vw,52px)] font-black leading-[1.05] tracking-[-0.035em]"
+          className="max-w-[17ch] text-subtitle font-black"
         >
           I make interfaces that feel{" "}
           <span className="text-accent">inevitable</span>, and I never drop a
@@ -44,13 +45,14 @@ export function About() {
             <div
               key={k}
               data-about
-              className="flex justify-between border-t border-border py-4 font-mono text-[14px]"
+              className="flex justify-between border-t border-border py-4 font-mono text-label"
             >
               <dt className="text-dim">{k}</dt>
               <dd className="font-medium text-ink">{v}</dd>
             </div>
           ))}
         </dl>
+        </div>
       </div>
     </section>
   );

@@ -18,6 +18,39 @@
   --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
 
+  /* ============================================================
+     Type scale — one committed ramp, semantic roles.
+     Display steps are fluid (clamp, capped at 6rem); body + labels
+     are fixed rem so they respect user zoom. Each token carries its
+     own leading + tracking; weight stays an explicit utility class.
+     Ratios between display steps stay >=1.25.
+     ============================================================ */
+  --text-display: clamp(2.75rem, 9vw, 6rem);          /* 44 -> 96  Hero only */
+  --text-display--line-height: 0.88;
+  --text-display--letter-spacing: -0.04em;
+
+  --text-title: clamp(2.125rem, 5.5vw, 3.75rem);      /* 34 -> 60  Work / Contact */
+  --text-title--line-height: 0.94;
+  --text-title--letter-spacing: -0.035em;
+
+  --text-subtitle: clamp(1.75rem, 4vw, 2.5rem);       /* 28 -> 40  Showcase / About */
+  --text-subtitle--line-height: 1.04;
+  --text-subtitle--letter-spacing: -0.03em;
+
+  --text-h3: clamp(1.5rem, 2.4vw, 2rem);              /* 24 -> 32  Project titles */
+  --text-h3--line-height: 1.05;
+  --text-h3--letter-spacing: -0.02em;
+
+  --text-lead: 1.125rem;                              /* 18  Hero paragraph */
+  --text-lead--line-height: 1.6;
+
+  --text-body: 1rem;                                  /* 16  Card / nav copy */
+  --text-body--line-height: 1.6;
+
+  --text-label: 0.8125rem;                            /* 13  Mono metadata */
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.01em;
+
   /* exponential ease-out — the only curve (DESIGN.md) */
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -25,15 +58,30 @@
 * { box-sizing: border-box; }
 
 html {
-  scroll-behavior: smooth;
   background: var(--color-bg);
   color: var(--color-ink);
+}
+
+/* Lenis smooth scroll (active for users without reduced-motion). */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  font-kerning: normal;
   overflow-x: hidden;
 }
 

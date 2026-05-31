@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { gsap } from "@/lib/gsap";
 import { Avatar } from "./Avatar";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 
@@ -42,19 +42,14 @@ export function Hero() {
   );
 
   return (
-    <section
-      ref={root}
-      className="mx-auto max-w-[1180px] px-5 pb-20 pt-16 sm:px-8 sm:pb-28 sm:pt-24"
-    >
-      <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[1.5fr_1fr] md:gap-14">
+    <section ref={root} className="flex min-h-screen items-center bg-bg">
+      <div
+        data-panel-inner
+        className="mx-auto w-full max-w-[1180px] px-5 py-20 sm:px-8 sm:py-28"
+      >
+        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[1.5fr_1fr] md:gap-14">
         <div className="min-w-0">
-          <div
-            data-anim="fade"
-            className="mb-7 font-mono text-[13px] tracking-[0.04em] text-accent"
-          >
-            FRONTEND ENGINEER — PORTFOLIO &rsquo;26
-          </div>
-          <h1 className="text-[clamp(52px,11vw,118px)] font-black leading-[0.86] tracking-[-0.05em]">
+          <h1 className="text-display font-black">
             <span className="block overflow-hidden">
               <span data-anim="line" className="block">Built to</span>
             </span>
@@ -67,7 +62,7 @@ export function Hero() {
           </h1>
           <p
             data-anim="fade"
-            className="mt-9 max-w-[58ch] text-[17px] leading-relaxed text-muted"
+            className="mt-9 max-w-[58ch] text-lead text-muted"
           >
             I build production AI SaaS with obsessive attention to the frame.
             Server-first React, real-time streams, motion that never blocks a
@@ -76,21 +71,22 @@ export function Hero() {
           <div data-anim="fade" className="mt-9 flex flex-wrap gap-3">
             <a
               href="#work"
-              className="bg-ink px-6 py-3 text-[15px] font-semibold text-bg press-hover"
+              className="bg-ink px-6 py-3 text-body font-semibold text-bg press-hover"
             >
               View work →
             </a>
             <a
               href="#contact"
-              className="border-2 border-ink px-6 py-3 text-[15px] font-semibold transition-colors hover:bg-ink hover:text-bg"
+              className="border-2 border-ink px-6 py-3 text-body font-semibold transition-colors hover:bg-ink hover:text-bg"
             >
               Get in touch
             </a>
           </div>
         </div>
 
-        <div data-anim="plate" className="press-hover mx-auto w-full min-w-0 max-w-[320px] md:mx-0 md:max-w-none">
-          <Avatar />
+          <div data-anim="plate" className="mx-auto w-full min-w-0 max-w-[320px] md:mx-0 md:max-w-none">
+            <Avatar />
+          </div>
         </div>
       </div>
     </section>

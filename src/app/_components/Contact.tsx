@@ -6,14 +6,15 @@ const LINKS: [string, string][] = [
 
 export function Contact() {
   return (
-    <footer id="contact" className="mx-auto max-w-[1180px] px-5 sm:px-8">
-      <div className="border-t-2 border-ink pb-12 pt-16">
+    <footer id="contact" className="flex min-h-screen items-center bg-surface-2">
+      <div className="mx-auto w-full max-w-[1180px] px-5 sm:px-8">
+        <div className="border-t-2 border-ink pb-12 pt-16">
         <div className="flex flex-col gap-12 md:flex-row md:items-end md:justify-between">
-          <p className="max-w-[12ch] text-[clamp(36px,6vw,72px)] font-black leading-[0.92] tracking-[-0.04em]">
+          <p className="max-w-[12ch] text-title font-black">
             Let&rsquo;s build something{" "}
             <span className="text-accent">sharp</span>.
           </p>
-          <nav className="flex flex-col gap-2.5 font-mono text-[15px]">
+          <nav className="flex flex-col gap-2.5 font-mono text-body">
             {LINKS.map(([label, href]) => (
               <a
                 key={label}
@@ -28,9 +29,10 @@ export function Contact() {
             ))}
           </nav>
         </div>
-        <div className="mt-16 flex justify-between font-mono text-[12px] text-dim">
-          <span>Ofir Cohen — 2026</span>
-          <span>built with intent</span>
+          <div className="mt-16 flex justify-between font-mono text-label tabular-nums text-dim">
+            <span>Ofir Cohen, 2026</span>
+            <span>built with intent</span>
+          </div>
         </div>
       </div>
     </footer>

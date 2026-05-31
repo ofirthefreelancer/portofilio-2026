@@ -1,21 +1,19 @@
 "use client";
 
+import Image from "next/image";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import { gsap } from "@/lib/gsap";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 
 /**
- * Press-style avatar placeholder. Oxblood plate with a monogram that
- * shifts slightly toward the cursor — alive without a real likeness yet.
- *
- * To swap in your photo: drop a square image at /public/avatar.jpg and
- * replace the monogram block with
- * <Image src="/avatar.jpg" alt="Ofir Cohen" fill className="object-cover" />.
+ * Hero portrait inside a square "press" frame. The image drifts slightly toward
+ * the cursor; it's overscanned (scale 1.08) so the drift never reveals an edge.
+ * Swap the avatar by changing the `src` (avatar1.png / avatar2.png in /public).
  */
 export function Avatar() {
   const root = useRef<HTMLDivElement>(null);
-  const mark = useRef<HTMLSpanElement>(null);
+  const mark = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
 
   useGSAP(
@@ -28,8 +26,8 @@ export function Avatar() {
         const r = el.getBoundingClientRect();
         const px = (e.clientX - r.left) / r.width - 0.5;
         const py = (e.clientY - r.top) / r.height - 0.5;
-        qx(px * 18);
-        qy(py * 18);
+        qx(px * 12);
+        qy(py * 12);
       };
       const onLeave = () => {
         qx(0);
@@ -48,15 +46,18 @@ export function Avatar() {
   return (
     <div
       ref={root}
-      aria-hidden="true"
-      className="flex aspect-square w-full items-center justify-center overflow-hidden border-2 border-ink bg-accent"
+      className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-full"
     >
-      <span
-        ref={mark}
-        className="select-none font-sans text-[clamp(64px,12vw,128px)] font-black leading-none tracking-[-0.05em] text-accent-ink"
-      >
-        OC
-      </span>
+      <div ref={mark} className="absolute inset-0 scale-[1.08]">
+        <Image
+          src="/avatar1.png"
+          alt="Ofir Cohen"
+          fill
+          priority
+          sizes="(max-width: 768px) 320px, 33vw"
+          className="object-cover"
+        />
+      </div>
     </div>
   );
 }
