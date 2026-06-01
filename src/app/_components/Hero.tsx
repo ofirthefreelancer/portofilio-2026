@@ -45,7 +45,7 @@ export function Hero() {
     <section ref={root} className="flex min-h-screen items-center bg-bg">
       <div
         data-panel-inner
-        className="mx-auto w-full max-w-[1180px] px-5 py-20 sm:px-8 sm:py-28"
+        className="mx-auto w-full max-w-[1180px] px-gutter py-section"
       >
         <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[1.5fr_1fr] md:gap-14">
         <div className="min-w-0">
@@ -68,10 +68,10 @@ export function Hero() {
             Server-first React, real-time streams, motion that never blocks a
             click. The interface itself is the proof.
           </p>
-          <div data-anim="fade" className="mt-9 flex flex-wrap gap-3">
+          <div data-anim="fade" className="mt-6 flex flex-wrap gap-3">
             <a
               href="#work"
-              className="bg-ink px-6 py-3 text-body font-semibold text-bg press-hover"
+              className="bg-accent px-6 py-3 text-body font-semibold text-accent-ink press-hover-ink"
             >
               View work →
             </a>

@@ -26,7 +26,10 @@ See also: [PRODUCT.md](PRODUCT.md), [DESIGN.md](DESIGN.md), [DEVELOPER.md](DEVEL
 
 ## 2. IMPECCABLE UI (Design execution)
 - **Color:** OKLCH only. Absolute ban on pure `#000`/`#fff`. Tinted dark
-  neutrals (low chroma, brand hue). Exactly one accent, ≤10% visual weight.
+  neutrals (low chroma, brand hue). Two-ink press run: oxblood
+  (`oklch(0.45 0.15 25)`) = human / action; petrol (`oklch(0.48 0.13 210)`)
+  = engineering / work. Near-complementary, matched chroma. No third hue.
+  Combined accent weight stays ≤15%; each ink keeps its assigned role.
 - **Layout:** Vary section heights and layouts for rhythm. Ban identical
   card grids and side-stripe borders.
 - **Typography:** Cap measure at 65–75ch (`max-w-3xl`). Hierarchy ratio

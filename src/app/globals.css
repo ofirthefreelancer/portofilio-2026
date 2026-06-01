@@ -12,8 +12,12 @@
   --color-ink:      oklch(0.19 0.012 40);
   --color-muted:    oklch(0.42 0.014 45);
   --color-dim:      oklch(0.56 0.014 50);
+  /* Two-ink press run. accent (oxblood) = human / action; accent-2 (petrol) =
+     engineering / work. Near-complementary hues (25 / 210), matched chroma. */
   --color-accent:   oklch(0.45 0.15 25);
   --color-accent-ink: oklch(0.97 0.02 70);
+  --color-accent-2: oklch(0.48 0.13 210);
+  --color-accent-2-ink: oklch(0.97 0.02 210);
 
   --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
@@ -50,6 +54,11 @@
   --text-label: 0.8125rem;                            /* 13  Mono metadata */
   --text-label--line-height: 1.4;
   --text-label--letter-spacing: 0.01em;
+
+  /* Fluid spatial system — one page gutter + one section rhythm, both breathing
+     with the viewport. Content gaps stay on Tailwind's numeric scale. */
+  --spacing-gutter: clamp(1.25rem, 1rem + 2vw, 2rem);    /* 20 -> 32  page edge */
+  --spacing-section: clamp(4rem, 2.5rem + 7vw, 7rem);    /* 64 -> 112 section padding */
 
   /* exponential ease-out — the only curve (DESIGN.md) */
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -107,6 +116,24 @@ p { text-wrap: pretty; }
     transform: translate(-3px, -3px);
     box-shadow: 6px 6px 0 var(--color-ink);
   }
+  /* Work cards: same signature, engineering ink, a touch more travel for big cards. */
+  .press-hover-2:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 8px 8px 0 var(--color-accent-2);
+  }
+}
+.press-hover-2 {
+  transition: transform 0.25s var(--ease-expo), box-shadow 0.25s var(--ease-expo);
+}
+
+/* Scroll-hint: the intro arrow nudges to invite the horizontal gallery. Desktop
+   only (that's where the scroll is horizontal), and never under reduced motion. */
+@keyframes work-hint {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .work-scroll-hint { animation: work-hint 1.7s var(--ease-expo) infinite; }
 }
 
 /* Reduced motion: kill transforms/animation, keep everything functional. */
@@ -117,5 +144,5 @@ p { text-wrap: pretty; }
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .press-hover:hover, .press-hover-ink:hover { transform: none; box-shadow: none; }
+  .press-hover:hover, .press-hover-ink:hover, .press-hover-2:hover { transform: none; box-shadow: none; }
 }

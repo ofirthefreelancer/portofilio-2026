@@ -42,7 +42,7 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-40 bg-bg/85 backdrop-blur-sm">
-        <div className="mx-auto flex h-16 max-w-[1180px] items-center justify-between border-b-2 border-ink px-5 sm:px-8">
+        <div className="mx-auto flex h-16 max-w-[1180px] items-center justify-between border-b-2 border-ink px-gutter">
           <Link
             href="/"
             className="text-body font-extrabold uppercase tracking-[0.03em] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
@@ -103,7 +103,7 @@ export function Header() {
       >
         {/* Sheet top row mirrors the bar so the takeover reads as continuous. */}
         <div
-          className="flex h-16 shrink-0 items-center justify-between border-b-2 border-ink px-5"
+          className="flex h-16 shrink-0 items-center justify-between border-b-2 border-ink px-gutter"
           style={{ paddingTop: "env(safe-area-inset-top)" }}
         >
           <span className="text-body font-extrabold uppercase tracking-[0.03em]">
@@ -122,7 +122,7 @@ export function Header() {
           </button>
         </div>
 
-        <nav className="flex flex-1 flex-col justify-between px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-10">
+        <nav className="flex flex-1 flex-col justify-between px-gutter pb-[max(2rem,env(safe-area-inset-bottom))] pt-10">
           <ul className="flex flex-col">
             {SECTIONS.map(([label, href], i) => (
               <li key={label} className="overflow-hidden border-b border-border">

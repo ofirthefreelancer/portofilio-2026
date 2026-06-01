@@ -6,10 +6,10 @@ import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 
 /**
- * Scroll signature, adapted from GreenSock's "Scrub" demo: a hairline accent
+ * Scroll signature, adapted from GreenSock's "Scrub" demo: a hairline petrol
  * rail whose fill is scrubbed by scroll, plus a mono progress readout with a
- * caret that flips with scroll direction. Restrained — the accent stays a thin
- * line, well under the ≤10% weight budget.
+ * caret that flips with scroll direction. Uses accent-2 (the engineering ink),
+ * a thin line that reads as a measuring instrument, not decoration.
  */
 export function ScrollProgress() {
   const rail = useRef<HTMLDivElement>(null);
@@ -67,7 +67,7 @@ export function ScrollProgress() {
         aria-hidden="true"
         className="pointer-events-none fixed inset-x-0 top-16 z-50 h-px"
       >
-        <div ref={rail} className="h-full w-full bg-accent" />
+        <div ref={rail} className="h-full w-full bg-accent-2" />
       </div>
 
       {/* mono readout, lower-right */}
@@ -83,7 +83,7 @@ export function ScrollProgress() {
           height="10"
           viewBox="0 0 10 11"
           fill="none"
-          className="text-accent"
+          className="text-accent-2"
         >
           <path
             fill="currentColor"

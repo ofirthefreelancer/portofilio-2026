@@ -7,7 +7,7 @@ const LINKS: [string, string][] = [
 export function Contact() {
   return (
     <footer id="contact" className="flex min-h-screen items-center bg-surface-2">
-      <div className="mx-auto w-full max-w-[1180px] px-5 sm:px-8">
+      <div className="mx-auto w-full max-w-[1180px] px-gutter">
         <div className="border-t-2 border-ink pb-12 pt-16">
         <div className="flex flex-col gap-12 md:flex-row md:items-end md:justify-between">
           <p className="max-w-[12ch] text-title font-black">

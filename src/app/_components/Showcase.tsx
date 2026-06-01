@@ -72,12 +72,12 @@ export function Showcase() {
       data-standalone
       className="flex min-h-screen items-center bg-surface-2"
     >
-      <div className="mx-auto w-full max-w-[1180px] px-5 sm:px-8">
+      <div className="mx-auto w-full max-w-[1180px] px-gutter">
         <div className="mb-8 flex items-end justify-between border-b-2 border-ink pb-4">
           <h2 className="text-subtitle font-black">
-            Wireframe → shipped
+            Wireframe <span className="text-accent-2">→ shipped</span>
           </h2>
-          <span className="font-mono text-label text-dim">scroll to reveal</span>
+          <span className="font-mono text-label text-accent-2">scroll to reveal</span>
         </div>
 
         {/* comparison frame — 16:9, pinned + wiped on desktop */}
@@ -148,12 +148,12 @@ function AfterArt() {
       className="absolute inset-0 h-full w-full"
     >
       <rect width="320" height="180" fill="var(--color-ink)" />
-      <rect x="20" y="22" width="120" height="14" fill="var(--color-accent)" />
+      <rect x="20" y="22" width="120" height="14" fill="var(--color-accent-2)" />
       <rect x="20" y="48" width="180" height="6" fill="var(--color-surface)" opacity="0.85" />
       <rect x="20" y="60" width="150" height="6" fill="var(--color-surface)" opacity="0.55" />
       <rect x="20" y="92" width="80" height="64" fill="var(--color-surface)" opacity="0.12" />
       <rect x="112" y="92" width="80" height="64" fill="var(--color-surface)" opacity="0.2" />
-      <rect x="204" y="92" width="96" height="64" fill="var(--color-accent)" opacity="0.85" />
+      <rect x="204" y="92" width="96" height="64" fill="var(--color-accent-2)" opacity="0.85" />
       <text x="20" y="172" fontFamily="monospace" fontSize="7" fill="var(--color-surface)">
         01 — SHIPPED
       </text>

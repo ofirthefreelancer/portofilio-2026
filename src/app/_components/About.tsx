@@ -29,7 +29,7 @@ export function About() {
     <section ref={root} id="about" className="flex min-h-screen items-center bg-bg">
       <div
         data-panel-inner
-        className="mx-auto w-full max-w-[1180px] px-5 py-20 sm:px-8 sm:py-28"
+        className="mx-auto w-full max-w-[1180px] px-gutter py-section"
       >
         <div className="grid gap-12 md:grid-cols-2 md:gap-20">
         <p
@@ -48,7 +48,7 @@ export function About() {
               className="flex justify-between border-t border-border py-4 font-mono text-label"
             >
               <dt className="text-dim">{k}</dt>
-              <dd className="font-medium text-ink">{v}</dd>
+              <dd className="font-medium text-accent-2">{v}</dd>
             </div>
           ))}
         </dl>

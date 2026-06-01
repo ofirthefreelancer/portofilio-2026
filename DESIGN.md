@@ -9,7 +9,9 @@ well-set press masthead, not a soft SaaS template.
 - **Theme:** LIGHT. Warm restrained paper background — warmth carried by the
   accent and ink, NOT by a cream/beige body (that warm near-white is the
   saturated AI default and is banned here).
-- **Accent:** oxblood red, `oklch(0.45 0.15 25)` — the single accent.
+- **Accents:** two inks, a press two-plate run. Oxblood red
+  `oklch(0.45 0.15 25)` (human / action) + petrol `oklch(0.48 0.13 210)`
+  (engineering / work). Near-complementary hues, matched chroma.
 - **Neutrals (OKLCH):**
   - bg `oklch(0.965 0.006 70)` · surface `oklch(0.99 0.004 70)`
   - border `oklch(0.84 0.012 60)` · ink/fg `oklch(0.19 0.012 40)`
@@ -27,8 +29,11 @@ well-set press masthead, not a soft SaaS template.
 - **OKLCH exclusively.** Every color in `oklch()`. No hex, no `rgb()`.
 - **No pure black or white.** Ink is `oklch(0.19 …)`, not `#000`; paper is
   `oklch(0.965 …)`, not `#fff`.
-- **One accent.** Oxblood only, ≤10% of visual weight, for the primary
-  action and key emphasis.
+- **Two inks, fixed roles.** Oxblood = primary action + key emphasis +
+  interactive identity (focus, selection, CTAs, accent words). Petrol =
+  engineering artifacts (project metadata, stack tags, scroll instrument,
+  shipped-state art). Never mix the roles. No third hue. Combined accent
+  weight ≤15%; each ink stays rare enough to keep its meaning.
 
 ## Layout
 - **Press structure over soft cards.** Hard rules and shared-border grids.
