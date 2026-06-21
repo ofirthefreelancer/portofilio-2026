@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "@/lib/gsap";
 import { Avatar } from "./Avatar";
+import { profile } from "@/lib/profile";
 import { useReducedMotion } from "@/lib/useReducedMotion";
 
 export function Hero() {
@@ -51,22 +52,17 @@ export function Hero() {
         <div className="min-w-0">
           <h1 className="text-display font-black">
             <span className="block overflow-hidden">
-              <span data-anim="line" className="block">Built to</span>
+              <span data-anim="line" className="block">Creative</span>
             </span>
             <span className="block overflow-hidden">
-              <span data-anim="line" className="block text-accent">feel</span>
-            </span>
-            <span className="block overflow-hidden">
-              <span data-anim="line" className="block">inevitable.</span>
+              <span data-anim="line" className="block text-accent">developer.</span>
             </span>
           </h1>
           <p
             data-anim="fade"
             className="mt-9 max-w-[58ch] text-lead text-muted"
           >
-            I build production AI SaaS with obsessive attention to the frame.
-            Server-first React, real-time streams, motion that never blocks a
-            click. The interface itself is the proof.
+            {profile.bio}
           </p>
           <div data-anim="fade" className="mt-6 flex flex-wrap gap-3">
             <a

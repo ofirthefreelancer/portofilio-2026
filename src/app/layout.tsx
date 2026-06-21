@@ -18,9 +18,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ofir Cohen — Frontend Engineer",
+  title: "Ofir Cohen — Creative Developer",
   description:
-    "Frontend engineer building production AI SaaS. Server-first React, real-time streams, motion that never blocks a click. The interface is the proof.",
+    "Creative developer building interactive web interfaces with React, GSAP, Three.js, and WebGL. Motion that carries meaning and never blocks a click.",
 };
 
 export default function RootLayout({

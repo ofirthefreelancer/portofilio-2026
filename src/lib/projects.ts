@@ -4,48 +4,29 @@ export type Project = {
   blurb: string;
   stack: string[];
   year: string;
+  /** Optional link to the live work. When set, the card becomes a link. */
+  href?: string;
+  /** Optional in-card preview. Rests on the poster, plays the clip on hover. */
+  preview?: { poster: string; video?: string; alt: string };
+  /** Optional mascot/cutout that breaks the preview frame for life. */
+  mascot?: string;
 };
 
-// Placeholder work — swap for real projects in one place.
+// Selected work. The stacking-cards UI reads from it directly.
 export const projects: Project[] = [
   {
     index: "01",
-    title: "Nimbus — AI Copilot",
+    title: "Almond Whitening Studio",
     blurb:
-      "Streaming support assistant over a 40k-document knowledge base. Sub-100ms first token, fully optimistic UI, zero layout shift end-to-end.",
-    stack: ["Next 16", "RSC", "Edge streaming"],
+      "Single-page site for a teeth-whitening studio in Canggu, Bali: a cinematic scan-to-smile hero, GSAP scroll storytelling, an animated tooth mascot swim, and WebGL accents.",
+    stack: ["Next.js", "GSAP", "React Three Fiber", "WebGL"],
     year: "2026",
+    href: "/templates/dental-spa",
+    preview: {
+      poster: "/templates/dentist/scan-to-smile-poster.jpg",
+      video: "/templates/dentist/scan-to-smile.mp4",
+      alt: "The scan-to-smile clip from the Almond Whitening Studio site",
+    },
+    mascot: "/templates/dentist/mascot/hero-tooth.png",
   },
-  {
-    index: "02",
-    title: "Orbit Analytics",
-    blurb:
-      "WebGL charts rendering one million data points at a locked 60fps, with smooth pan and zoom on commodity hardware.",
-    stack: ["WebGL", "D3"],
-    year: "2025",
-  },
-  {
-    index: "03",
-    title: "Forge",
-    blurb:
-      "Visual schema builder with live TypeScript codegen. Drag to define a data model, get typed clients instantly.",
-    stack: ["AST", "Drag & drop"],
-    year: "2025",
-  },
-  {
-    index: "04",
-    title: "Pulse — Realtime Dashboard",
-    blurb:
-      "Collaborative ops dashboard with live presence, optimistic mutations, and conflict-free sync across clients.",
-    stack: ["CRDT", "WebSocket", "Suspense"],
-    year: "2024",
-  },
-];
-
-export const skills: [string, string][] = [
-  ["Framework", "Next 16 · React 19"],
-  ["Language", "TypeScript (strict)"],
-  ["Motion", "GSAP · WebGL"],
-  ["Styling", "Tailwind v4 · OKLCH"],
-  ["Care about", "perf · feel · craft"],
 ];

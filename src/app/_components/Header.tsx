@@ -61,13 +61,6 @@ export function Header() {
                 {label}
               </a>
             ))}
-            {/* Templates demoted to a single header link */}
-            <Link
-              href="/templates"
-              className="bg-accent px-4 py-2 font-mono text-label font-medium text-accent-ink press-hover-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
-            >
-              Templates ↗
-            </Link>
           </nav>
 
           {/* Mobile toggle — only affordance in the bar; Templates lives inside the sheet */}
@@ -142,21 +135,14 @@ export function Header() {
             ))}
           </ul>
 
-          {/* Templates + contact sit at the foot, deliberately subordinate. */}
-          <div className="flex items-end justify-between">
-            <Link
-              href="/templates"
-              onClick={() => setOpen(false)}
-              className="bg-accent px-4 py-2.5 font-mono text-label font-medium text-accent-ink press-hover-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
-            >
-              Templates ↗
-            </Link>
+          {/* Contact sits at the foot, deliberately subordinate. */}
+          <div className="flex items-end justify-end">
             <a
-              href="mailto:aguralog@gmail.com"
+              href="mailto:ofirthefreelancer@gmail.com"
               onClick={() => setOpen(false)}
               className="font-mono text-label text-muted transition-colors hover:text-ink"
             >
-              aguralog@gmail.com
+              ofirthefreelancer@gmail.com
             </a>
           </div>
         </nav>

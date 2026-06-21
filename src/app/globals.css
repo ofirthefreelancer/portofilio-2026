@@ -19,6 +19,18 @@
   --color-accent-2: oklch(0.48 0.13 210);
   --color-accent-2-ink: oklch(0.97 0.02 210);
 
+  /* About "two-plate" art direction — each plate inked in its own hue, so the
+     wipe reads as a press run (oxblood design plate -> petrol engineering
+     plate). Tints of the two inks (hue 25 / 210); no third hue. The light
+     petrol variants keep labels legible on the dark engineering surface, where
+     petrol at L0.45 would fail contrast. */
+  --color-design-surface: oklch(0.93 0.035 25);  /* soft oxblood-tinted paper */
+  --color-design-dim:     oklch(0.43 0.07 25);   /* muted oxblood for sub-labels */
+  --color-eng-surface:    oklch(0.21 0.045 210); /* petrol-tinted near-black */
+  --color-eng-line:       oklch(0.72 0.14 210);  /* light petrol, on-dark labels */
+  --color-eng-dim:        oklch(0.68 0.06 210);  /* muted light petrol sub-label */
+  --color-accent-bright:  oklch(0.62 0.17 25);   /* light oxblood, legible on ink */
+
   --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
 
@@ -136,6 +148,17 @@ p { text-wrap: pretty; }
   .work-scroll-hint { animation: work-hint 1.7s var(--ease-expo) infinite; }
 }
 
+/* Work-card mascot idle float — the tooth that peeks over the live preview
+   breathes gently at rest. Hover lift + entrance live on separate layers
+   (inner img / outer span), so this transform never fights them. */
+@keyframes work-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .work-mascot-float { animation: work-float 6s var(--ease-expo) infinite; }
+}
+
 /* Reduced motion: kill transforms/animation, keep everything functional. */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -145,4 +168,132 @@ p { text-wrap: pretty; }
     scroll-behavior: auto !important;
   }
   .press-hover:hover, .press-hover-ink:hover, .press-hover-2:hover { transform: none; box-shadow: none; }
+}
+
+/* ============================================================
+   Dental Spa template (/templates/dental-spa/*) — SELF-CONTAINED.
+   "Deep Petrol" brand, OKLCH: a rich teal-leaning blue on a cool near-white,
+   deep ink-navy text. A committed, restrained take on clinical blue (not the
+   generic baby-blue default); the blue mascot sits at home, seated by a glow.
+   Scoped to .spa-root so the portfolio's "Press" tokens above are never touched.
+   ============================================================ */
+.spa-root {
+  --spa-bg: oklch(0.975 0.007 235);          /* cool near-white, faint petrol tint */
+  --spa-surface: oklch(0.955 0.013 230);
+  --spa-ink: oklch(0.28 0.055 248);          /* deep ink-navy — not black */
+  --spa-ink-soft: oklch(0.45 0.05 245);      /* muted blue body (verified ~4.5:1 on bg) */
+  --spa-line: oklch(0.88 0.016 233);
+  --spa-accent: oklch(0.58 0.11 240);        /* petrol blue — fills, glow, focus */
+  --spa-accent-strong: oklch(0.47 0.13 248); /* deep azure — CTAs, links/text on light */
+  --spa-accent-ink: oklch(0.99 0.004 235);
+  --spa-glow: oklch(0.92 0.03 230);          /* soft cool halo seats the mascot */
+  --spa-danger: oklch(0.55 0.16 25);         /* warm red, distinct from the blue accent */
+  --spa-porthole: oklch(0.93 0.02 230);      /* mascot bubble fill */
+  --spa-radius: 1.5rem;
+
+  font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  background: var(--spa-bg);
+  color: var(--spa-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Hero colorways under evaluation ──────────────────────────────────────
+   Two-ink press logic: the petrol mascot PNG is the fixed "clinical" ink; each
+   class below introduces ONE warm second ink for the accent role (headline
+   accent word, primary CTA, fact-dots, mascot halo). Cool field stays constant
+   so the only variable on screen is the warm hue. The winner gets promoted into
+   .spa-root and given a proper role split across the rest of the page. */
+.spa-coral {
+  --spa-accent: oklch(0.66 0.13 46);          /* warm clay — glow, fills */
+  --spa-accent-strong: oklch(0.52 0.145 42);  /* deep coral — CTA, accent word, dots */
+  --spa-glow: oklch(0.91 0.045 55);           /* sunlit halo seats the mascot */
+}
+.spa-sage {
+  --spa-accent: oklch(0.62 0.082 158);        /* eucalyptus */
+  --spa-accent-strong: oklch(0.47 0.083 160); /* deep sage */
+  --spa-glow: oklch(0.91 0.04 165);
+}
+.spa-amber {
+  --spa-accent: oklch(0.72 0.125 84);         /* honey */
+  --spa-accent-strong: oklch(0.62 0.13 80);   /* amber — bright fill needs dark text */
+  --spa-accent-ink: oklch(0.27 0.05 70);      /* dark warm ink ON amber for contrast */
+  --spa-glow: oklch(0.91 0.06 86);
+}
+
+/* Light Clinic: light-dominant, airy. (the only direction — uses .spa-root defaults) */
+
+/* Text that sits over a darkened media panel (e.g. the diagnostics image) — light. */
+.spa-hero-ink { color: oklch(0.985 0.012 235); }
+
+/* Brand buttons. Primary = deep/accent fill; ghost = outline. Token-driven so
+   each variant recolors them. Full pill radius — reads identical at any button
+   height, so every CTA shares one shape. */
+.spa-cta-primary {
+  background: var(--spa-accent-strong);
+  color: var(--spa-accent-ink);
+  border-radius: 9999px;
+}
+.spa-cta-ghost {
+  color: var(--spa-ink);
+  background: var(--spa-surface);
+  border: 1.5px solid color-mix(in oklch, var(--spa-accent-strong) 38%, var(--spa-line));
+  border-radius: 9999px;
+}
+.spa-cta-ghost:hover {
+  border-color: var(--spa-accent-strong);
+  background: color-mix(in oklch, var(--spa-accent) 12%, var(--spa-surface));
+}
+
+/* Form fields: visible focus ring (border alone reads as too quiet) + an
+   inline-error state that pairs with the JS validation in BookAppointment. */
+.spa-field:focus-visible {
+  border-color: var(--spa-accent-strong) !important;
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--spa-accent) 32%, transparent);
+}
+.spa-field[aria-invalid="true"] {
+  border-color: var(--spa-danger) !important;
+}
+.spa-field[aria-invalid="true"]:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--spa-danger) 28%, transparent);
+}
+/* Mascot porthole — round window whose fill matches the clips' baked bg, so the
+   raster/video edge disappears. Slight inner ring reads as intentional framing.
+   Media is scaled + nudged up so the bottom watermark falls outside the circle. */
+.spa-porthole {
+  border-radius: 9999px;
+  background: var(--spa-porthole);
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--spa-ink) 8%, transparent),
+              0 24px 60px -28px color-mix(in oklch, var(--spa-ink) 60%, transparent);
+}
+.spa-porthole > video,
+.spa-porthole > img {
+  width: 116%;
+  height: 116%;
+  object-fit: cover;
+  object-position: 50% 38%;
+  transform: translate(-7%, -9%);
+}
+
+/* Gentle idle bob for the mascot porthole (inner element; sections drive the
+   outer wrapper transform via GSAP, so the two never fight). */
+@keyframes spa-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -6px, 0); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .spa-float { animation: spa-float 7s var(--ease-expo) infinite; }
+}
+
+/* Depth sparkles in the MotionPath dive. */
+@keyframes spa-spark { to { opacity: 0.1; } }
+@media (prefers-reduced-motion: no-preference) {
+  .spa-spark { animation: spa-spark 2400ms ease-in-out infinite alternate; }
+}
+
+/* Pre-paint hidden state for scroll-reveal items: visible by default, JS opts in
+   to animate-from. Guarded so headless/reduced-motion renders never ship blank. */
+.spa-root [data-spa-reveal] { will-change: transform, opacity; }
+@media (prefers-reduced-motion: reduce) {
+  .spa-root [data-spa-reveal] { opacity: 1 !important; transform: none !important; }
 }
